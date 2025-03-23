@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Add-NewDomainController</command:name>
+      <command:verb>Add</command:verb>
+      <command:noun>NewDomainController</command:noun>
+      <maml:description>
+        <maml:para>Installs and configures a new domain controller in an existing Active Directory domain.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>The `Add-NewDomainController` function installs the required features for Active Directory Domain Services, DNS, and RSAT (Remote Server Administration Tools). It then uses the provided credentials to join a machine to an existing Active Directory domain and configure it as a new domain controller.</maml:para>
+      <maml:para>The function also gathers domain information, prepares the necessary settings (such as database paths, log paths, and replication settings), and runs the `Install-ADDSDomainController` cmdlet to configure the server as a domain controller.</maml:para>
+      <maml:para>This function assumes the machine is part of an existing Active Directory forest and has internet access to download required features. The user running the script must have the necessary administrative privileges to install Active Directory Domain Services and configure DNS.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-NewDomainController</maml:name>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters />
+    <command:inputTypes />
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Author      : Michael Free Date        : 2025-03-22 License     : Free Custom License (FCL) v1.0 Copyright   : 2025, Michael Free. All Rights Reserved.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Add-NewDomainController</dev:code>
+        <dev:remarks>
+          <maml:para>This command installs the required features, prompts for user credentials, and configures the current server as a new domain controller in the existing Active Directory domain.</maml:para>
+        </dev:remarks>
+      </command:example>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 2 --------------------------</maml:title>
+        <dev:code>$domainController = Add-NewDomainController</dev:code>
+        <dev:remarks>
+          <maml:para>This stores the result of the domain controller promotion into the `$domainController` variable, but since the function doesn't return output, `$domainController` will be `$null`.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/Michael-Free/PSCreateADForest/Docs/Add-NewDomainController.md</maml:linkText>
+        <maml:uri>https://github.com/Michael-Free/PSCreateADForest/Docs/Add-NewDomainController.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Install-NewAdForestAndPromote</command:name>
+      <command:verb>Install</command:verb>
+      <command:noun>NewAdForestAndPromote</command:noun>
+      <maml:description>
+        <maml:para>Installs a new Active Directory Domain Services forest with the specified domain name, NetBIOS name, and operating system mode.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This function installs and configures a new Active Directory Domain Services (AD DS) forest.</maml:para>
+      <maml:para>It takes the following parameters: `DomainName`, `NetBiosName`, and `Mode`. The function checks that the system is running Windows Server, validates the domain and NetBIOS names, verifies that the provided operating system mode is supported, and installs the necessary features to configure AD DS.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Install-NewAdForestAndPromote</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>DomainName</maml:name>
+          <maml:description>
+            <maml:para>The Fully Qualified Domain Name (FQDN) for the new domain in the forest. This should be in the format of a valid FQDN (e.g., "example.com").</maml:para>
+            <maml:para>The function validates the domain name to ensure it matches the correct format.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>NetBiosName</maml:name>
+          <maml:description>
+            <maml:para>The NetBIOS name for the domain, which must be a single-word name without spaces or special characters. This name is used for backward compatibility in networking.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>Mode</maml:name>
+          <maml:description>
+            <maml:para>The operating system mode to use for the new domain forest. Supported values are: `Win2008`, `Win2008R2`, `Win2012`, `Win2012R2`, `WinThreshold`, `Default`. This parameter determines the version of Active Directory to be used in the forest.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+          <maml:name>ProgressAction</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+          <dev:type>
+            <maml:name>ActionPreference</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>DomainName</maml:name>
+        <maml:description>
+          <maml:para>The Fully Qualified Domain Name (FQDN) for the new domain in the forest. This should be in the format of a valid FQDN (e.g., "example.com").</maml:para>
+          <maml:para>The function validates the domain name to ensure it matches the correct format.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>NetBiosName</maml:name>
+        <maml:description>
+          <maml:para>The NetBIOS name for the domain, which must be a single-word name without spaces or special characters. This name is used for backward compatibility in networking.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>Mode</maml:name>
+        <maml:description>
+          <maml:para>The operating system mode to use for the new domain forest. Supported values are: `Win2008`, `Win2008R2`, `Win2012`, `Win2012R2`, `WinThreshold`, `Default`. This parameter determines the version of Active Directory to be used in the forest.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+        <maml:name>ProgressAction</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$DomainName</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$NetBiosName</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$Mode</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Author      : Michael Free Date        : 2025-03-22 License     : Free Custom License (FCL) v1.0 Copyright   : 2025, Michael Free. All Rights Reserved.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Install-New-AdForestAndPromote -DomainName "example.com" -NetBiosName "EXAMPLE" -Mode "Win2012"</dev:code>
+        <dev:remarks>
+          <maml:para>This command will install a new Active Directory Domain Services forest with the domain "example.com" and the NetBIOS name "EXAMPLE" using the "Win2016" AD mode.</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/Michael-Free/PSCreateADForest/Docs/Install-NewAdForestAndPromote.md</maml:linkText>
+        <maml:uri>https://github.com/Michael-Free/PSCreateADForest/Docs/Install-NewAdForestAndPromote.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10" xmlns:MSHelp="http://msdn.microsoft.com/mshelp">
+    <command:details>
+      <command:name>Invoke-DomainControllerNetworkSettings</command:name>
+      <command:verb>Invoke</command:verb>
+      <command:noun>DomainControllerNetworkSettings</command:noun>
+      <maml:description>
+        <maml:para>Configures a network interface on a Windows Server for use as a domain controller, setting the hostname, IPv4 address, subnet prefix, gateway, and DNS server.</maml:para>
+      </maml:description>
+    </command:details>
+    <maml:description>
+      <maml:para>This script configures the network settings required for setting up a domain controller.  It takes the following parameters: `Hostname`, `IPv4Address`, `IPv4Prefix`, `IPv4Gateway`, and `IPv4DNS`. The function validates the input parameters, ensures the system is running Windows Server, checks for active network interfaces, and disables unnecessary IPv6 configurations.</maml:para>
+      <maml:para>It then sets the IPv4 address, default gateway, and DNS server for the network interface. If the hostname is different from the current computer name, it renames the computer to match the specified `Hostname`.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-DomainControllerNetworkSettings</maml:name>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+          <maml:name>Hostname</maml:name>
+          <maml:description>
+            <maml:para>The name that the machine will be assigned as its hostname. If the current hostname is already set, enter the existing hostname.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+          <maml:name>IPv4Address</maml:name>
+          <maml:description>
+            <maml:para>The IP address that will be configured for the domain controller. This address will be used to uniquely identify the domain controller on the network.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+          <maml:name>IPv4Prefix</maml:name>
+          <maml:description>
+            <maml:para>Specifies the subnet mask for the IPv4 address, which defines the size of the network portion of the address.</maml:para>
+            <maml:para>This value must be between 8 and 30, with 24 being a typical value for most networks.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+          <dev:type>
+            <maml:name>Int32</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>0</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+          <maml:name>IPv4Gateway</maml:name>
+          <maml:description>
+            <maml:para>The IP address of the device (such as a router or switch) that will act as the intermediary for communication between devices within the network and external networks.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+          <maml:name>IPv4DNS</maml:name>
+          <maml:description>
+            <maml:para>The IP address of the DNS server for the domain controller. For domain controllers, this is often an upstream DNS server (8.8.8.8, 1.1.1.1), where external domain names can resolve.</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+          <dev:type>
+            <maml:name>String</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+        <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+          <maml:name>ProgressAction</maml:name>
+          <maml:description>
+            <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+          </maml:description>
+          <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+          <dev:type>
+            <maml:name>ActionPreference</maml:name>
+            <maml:uri />
+          </dev:type>
+          <dev:defaultValue>None</dev:defaultValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="1" aliases="none">
+        <maml:name>Hostname</maml:name>
+        <maml:description>
+          <maml:para>The name that the machine will be assigned as its hostname. If the current hostname is already set, enter the existing hostname.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="2" aliases="none">
+        <maml:name>IPv4Address</maml:name>
+        <maml:description>
+          <maml:para>The IP address that will be configured for the domain controller. This address will be used to uniquely identify the domain controller on the network.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="3" aliases="none">
+        <maml:name>IPv4Prefix</maml:name>
+        <maml:description>
+          <maml:para>Specifies the subnet mask for the IPv4 address, which defines the size of the network portion of the address.</maml:para>
+          <maml:para>This value must be between 8 and 30, with 24 being a typical value for most networks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">Int32</command:parameterValue>
+        <dev:type>
+          <maml:name>Int32</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>0</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="4" aliases="none">
+        <maml:name>IPv4Gateway</maml:name>
+        <maml:description>
+          <maml:para>The IP address of the device (such as a router or switch) that will act as the intermediary for communication between devices within the network and external networks.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="true" variableLength="true" globbing="false" pipelineInput="False" position="5" aliases="none">
+        <maml:name>IPv4DNS</maml:name>
+        <maml:description>
+          <maml:para>The IP address of the DNS server for the domain controller. For domain controllers, this is often an upstream DNS server (8.8.8.8, 1.1.1.1), where external domain names can resolve.</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+      <command:parameter required="false" variableLength="true" globbing="false" pipelineInput="False" position="named" aliases="proga">
+        <maml:name>ProgressAction</maml:name>
+        <maml:description>
+          <maml:para>{{ Fill ProgressAction Description }}</maml:para>
+        </maml:description>
+        <command:parameterValue required="true" variableLength="false">ActionPreference</command:parameterValue>
+        <dev:type>
+          <maml:name>ActionPreference</maml:name>
+          <maml:uri />
+        </dev:type>
+        <dev:defaultValue>None</dev:defaultValue>
+      </command:parameter>
+    </command:parameters>
+    <command:inputTypes>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$Hostname</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$IPv4Address</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[int]$IPv4Prefix</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$IPv4Gateway</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+      <command:inputType>
+        <dev:type>
+          <maml:name>[string]$IPv4DNS</maml:name>
+        </dev:type>
+        <maml:description>
+          <maml:para></maml:para>
+        </maml:description>
+      </command:inputType>
+    </command:inputTypes>
+    <command:returnValues />
+    <maml:alertSet>
+      <maml:alert>
+        <maml:para>Author      : Michael Free Date        : 2025-03-22 License     : Free Custom License (FCL) v1.0 Copyright   : 2025, Michael Free. All Rights Reserved.</maml:para>
+      </maml:alert>
+    </maml:alertSet>
+    <command:examples>
+      <command:example>
+        <maml:title>-------------------------- EXAMPLE 1 --------------------------</maml:title>
+        <dev:code>Invoke-DomainControllerNetworkSettings -Hostname "DC1" -IPv4Address "192.168.1.10" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "8.8.8.8"</dev:code>
+        <dev:remarks>
+          <maml:para>This command will configure the network interface of the domain controller, set the hostname to `DC1`, configure the IPv4 address to `192.168.1.10`, with a subnet prefix of `24`, the gateway `192.168.1.1`, and set the upstream DNS server to Google's DNS IP address (`8.8.8.8`).</maml:para>
+        </dev:remarks>
+      </command:example>
+    </command:examples>
+    <command:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>https://github.com/Michael-Free/PSCreateADForest/Docs/Invoke-DomainControllerNetworkSettings.md</maml:linkText>
+        <maml:uri>https://github.com/Michael-Free/PSCreateADForest/Docs/Invoke-DomainControllerNetworkSettings.md</maml:uri>
+      </maml:navigationLink>
+    </command:relatedLinks>
+  </command:command>
+</helpItems>

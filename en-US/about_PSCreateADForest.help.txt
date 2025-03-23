@@ -1,0 +1,112 @@
+﻿TOPIC
+    about_pscreateadforest
+
+SHORT DESCRIPTION
+    Rapidly create new Active Directory Forests and Domain Controllers.
+
+LONG DESCRIPTION
+    PSCreateADForest is a PowerShell module designed to quickly create new
+    Active Directory forests and domain controllers. It's ideal for disaster
+    recovery, setting up AD from scratch, or creating test and development
+    environments efficiently, allowing for rapid deployment and teardown without
+    starting from scratch.
+
+EXAMPLES
+EXAMPLE 1
+    This example shows how to set up a NEW Active Directory Forest and a new
+    Domain Controller. Before starting this process, the new Domain Controller
+    must not be actively joined to an existing Active Directory domain.
+
+    Invoke-DomainControllerNetworkSettings -Hostname "DC1" -IPv4Address "192.168.1.10" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "8.8.8.8"
+    Restart-Computer -Force
+
+    In the first step, we are setting the new hostname of this server instance. 
+    However, if the server is already set to the desired hostname, supply the
+    current hostname of the device. The IPv4Address MUST be an IP address that
+    is currently NOT in use.  This will be the NEW IP address of the server
+    going  forward.
+    After the first reboot, creating the new Domain Controller and setting up
+    the forest is now possible.
+
+    Install-NewAdForestAndPromote -DomainName "example.com" -NetBiosName "EXAMPLE" -Mode "Win2012"
+    Restart-Computer -Force
+
+    Reboot after this action has completed and the Domain Controller will now be
+     configured and ready to use.
+
+EXAMPLE 2
+    This example demonstrates how to add additional domain controllers to the
+    newly created Active Directory forest that was created in Example 1. Before
+    starting, the new server must be added to the domain.  Firstly, the DNS
+    server used by this device must be set to the IP address used for the first
+    domain controller.
+
+    Set-DnsClientServerAddress -InterfaceIndex (Get-NetAdapter).ifIndex -ServerAddresses ("192.168.1.10")
+
+    Now that the DNS server has been set on this machine, the machine can now be
+    added to the domain. Unfortunately, this is Windows and a reboot is required
+    after this action.
+
+    Add-Computer -DomainName example.com -Credential example.com\Administrator
+    Restart-Computer -Force
+
+    After the reboot has taken place, we will apply network settings for the
+    domain controller.
+
+    Invoke-DomainControllerNetworkSettings -Hostname "DC2" -IPv4Address "192.168.1.11" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "192.168.1.10"
+    Restart-Computer -Force
+
+    Once this reboot is complete, add the new domain controller and reboot
+
+    Add-NewDomainController
+    Restart-Computer -Force
+
+NOTE
+    - Author: Michael Free (c) 2024
+    - Website: https://github.com/Michael-Free
+    - Social: https://mastodon.social/@MichaelFree
+
+TROUBLESHOOTING NOTE
+    {{ Troubleshooting Placeholder - Warns users of bugs}}
+    {{ Explains behavior that is likely to change with fixes }}
+
+SEE ALSO
+    Active Directory Related: -
+    https://rdr-it.com/en/create-an-active-directory-environment-in-powershell/ - https://www.microsoft.com/en-gb/industry/blog/technetuk/2016/06/08/setting-up-active-directory-via-powershell/
+    - https://www.reddit.com/r/activedirectory/comments/oz8wy7/powershell_script_for_setting_up_a_domain/
+    - https://itpro.outsidesys.com/2015/12/13/lab-build-a-domain-controller-with-powershell/
+    - https://www.readandexecute.com/how-to/server-2016/active-directory/installing-active-directory-with-powershell-windows-server-2016/
+    - https://medium.com/@serkanturan_79203/installing-active-directory-with-powershell-ea48de56088c
+    - https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/deploy/creating-a-new-active-directory-forest
+    Networking Related: - https://www.techtarget.com/searchnetworking/tip/IP-addressing-and-subnetting-Calculate-a-subnet-mask-using-the-hosts-formula
+    - https://stackoverflow.com/questions/38060921/getting-specific-network-information-in-powershell
+    - https://gist.github.com/purplemonkeymad/ea2d9fa5832797fa5dc2159db5016822
+    - https://learn.microsoft.com/en-us/dotnet/api/system.net.ipaddress?view=net-9.0
+    - https://4sysops.com/archives/get-and-set-ip-address-with-powershell/
+    - https://docs.netgate.com/pfsense/en/latest/network/cidr.html
+    - https://stackoverflow.com/questions/60578612/powershell-calculating-network-id-using-ip-address-and-subnet-mask
+    - https://learn.microsoft.com/en-us/powershell/module/nettcpip/set-netipv6protocol?view=windowsserver2025-ps
+    - https://learn.microsoft.com/en-us/powershell/module/networktransition/set-net6to4configuration?view=windowsserver2025-ps
+    - https://learn.microsoft.com/en-us/powershell/module/networktransition/set-netisatapconfiguration?view=windowsserver2025-ps
+    - https://learn.microsoft.com/en-us/dotnet/api/system.net.ipaddress.parse?view=net-9.0#system-net-ipaddress-parse(system-string)
+    -
+    https://techcommunity.microsoft.com/blog/coreinfrastructureandsecurityblog/ipv6-for-the-windows-administrator-why-you-need-to-care-about-ipv6/256251
+
+KEYWORDS
+    - PSCreateADForest
+    - Install-NewAdForestAndPromote
+    - Invoke-DomainControllerNetworkSettings
+    - Add-NewDomainController
+    - Domain
+    - Controller
+    - Active
+    - Directory
+    - DNS
+    - Forest
+    - Promote
+    - IP
+    - Address
+    - IPv4
+    - Network
+    - Settings
+
