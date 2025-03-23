@@ -8,9 +8,6 @@ PSCreateADForest is a PowerShell module designed to quickly create new Active Di
     - The server must NOT be a domain controller, or joined to a Windows domain.
 - PowerShell:
     - PowerShell 5.1 or later installed on the server.
-- Python:
-    - Python 3.x installed (for running the user generation script).
-    - The faker library installed (pip install faker).
 - Permissions:
     - Administrative privileges on the server.
 - Basic Knowledge:
