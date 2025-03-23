@@ -23,7 +23,7 @@ function Get-OSTarget {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -61,7 +61,7 @@ function Get-AdapterCount {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -113,7 +113,7 @@ function Get-IPv4NetworkID {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -176,7 +176,7 @@ function Get-DomainInfo {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -253,7 +253,7 @@ function Approve-DomainVariables {
   
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
   
@@ -320,7 +320,7 @@ function Approve-IPVariables {
  
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -372,7 +372,7 @@ function Add-NetworkConfig {
     
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -447,7 +447,7 @@ function Invoke-DomainControllerNetworkSettings {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -535,7 +535,7 @@ function Install-NewAdForestAndPromote {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
@@ -621,10 +621,10 @@ function Install-DnsService {
         However, the function does not return output, so `$result` will be `$null`.
 
     .NOTES
-      Author      : Michael Free
-      Date        : 2025-03-19
-      License     : Free Custom License (FCL) v1.0
-      Copyright   : 2025, Michael Free. All Rights Reserved.
+        Author      : Michael Free
+        Date        : 2025-03-22
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Install-DnsService.md
@@ -705,7 +705,7 @@ function Add-NewDomainController {
 
     .NOTES
         Author      : Michael Free
-        Date        : 2025-03-19
+        Date        : 2025-03-22
         License     : Free Custom License (FCL) v1.0
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
