@@ -22,9 +22,10 @@ function Get-OSTarget {
         an exception will be thrown.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Get-OSTarget.md
@@ -59,9 +60,10 @@ function Get-AdapterCount {
         This command will return no output if all requirements are met.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Get-AdapterCount.md
@@ -110,9 +112,10 @@ function Get-IPv4NetworkID {
         This example stores the network ID in the `$networkID` variable and outputs it.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Get-IPv4NetworkID.md
@@ -172,9 +175,10 @@ function Get-DomainInfo {
         This example stores the domain information in the `$domainInfo` variable and outputs the domain name.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Get-DomainInfo.md
@@ -248,9 +252,10 @@ function Approve-DomainVariables {
         over 15 characters, and that the ModeType is valid (in this case, Win2008).
   
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
   
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Approve-DomainVariables.md
@@ -314,9 +319,10 @@ function Approve-IPVariables {
         Validates the provided array of IP variables. If all conditions are met, the function completes silently.
  
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Approve-IPVariables.md
@@ -365,9 +371,10 @@ function Add-NetworkConfig {
         This command turns off IPv6 Random & Temporary IP Assignments, as well as IPv6 Transition Technologies.
     
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Add-NetworkConfig.md
@@ -439,9 +446,10 @@ function Invoke-DomainControllerNetworkSettings {
         gateway `192.168.1.1`, and set the upstream DNS server to Google's DNS IP address (`8.8.8.8`).
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Invoke-DomainControllerNetworkSettings.md
@@ -526,9 +534,10 @@ function Install-NewAdForestAndPromote {
         "example.com" and the NetBIOS name "EXAMPLE" using the "Win2016" AD mode.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Install-NewAdForestAndPromote.md
@@ -612,9 +621,10 @@ function Install-DnsService {
         However, the function does not return output, so `$result` will be `$null`.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+      Author      : Michael Free
+      Date        : 2025-03-19
+      License     : Free Custom License (FCL) v1.0
+      Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Install-DnsService.md
@@ -694,9 +704,10 @@ function Add-NewDomainController {
         function doesn't return output, `$domainController` will be `$null`.
 
     .NOTES
-        - Author: Michael Free (c) 2024
-        - Website: https://github.com/Michael-Free
-        - Social: https://mastodon.social/@MichaelFree
+        Author      : Michael Free
+        Date        : 2025-03-19
+        License     : Free Custom License (FCL) v1.0
+        Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
         https://github.com/Michael-Free/PSCreateADForest/Docs/Add-NewDomainController.md
