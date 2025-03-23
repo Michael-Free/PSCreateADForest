@@ -12,7 +12,25 @@ PSCreateADForest is a PowerShell module designed to quickly create new Active Di
 
 #### Creating a New Active Directory Forest
 
-#### Creating a New Domain Controller in an Existing Forest
+This example shows how to set up a NEW Active Directory Forest and a new Domain Controller. Before starting this process, the new Domain Controller must not be actively joined to an existing Active Directory domain.
+
+```powershell
+Invoke-DomainControllerNetworkSettings -Hostname "DC1" -IPv4Address "192.168.1.10" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "8.8.8.8"
+Restart-Computer -Force
+```
+In the first step, we are setting the new hostname of this server instance. However, if the server is already set to the desired hostname, supply the current hostname of the device. The IPv4Address MUST be an IP address that is currently NOT in use.  This will be the NEW IP address of the server going forward.
+
+After the first reboot, creating the new Domain Controller and setting up the forest is now possible.
+
+```powershell
+Install-NewAdForestAndPromote -DomainName "example.com" -NetBiosName "EXAMPLE" -Mode "Win2012"
+Restart-Computer -Force
+```
+
+Reboot after this action has completed and the Domain Controller will now be configured and ready to use.
+
+
+#### Adding a New Domain Controller in an Existing Forest
 
 ## License
 
