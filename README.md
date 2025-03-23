@@ -31,6 +31,34 @@ Reboot after this action has completed and the Domain Controller will now be con
 
 
 #### Adding a New Domain Controller in an Existing Forest
+This example demonstrates how to add additional domain controllers to the newly created Active Directory forest that was created in Example 1. 
+
+Before starting, the new server must be added to the domain.  Firstly, the DNS server used by this device must be set to the IP address used for the first domain controller.
+
+```powershell
+Set-DnsClientServerAddress -InterfaceIndex (Get-NetAdapter).ifIndex -ServerAddresses ("192.168.1.10")
+```
+
+Now that the DNS server has been set on this machine, the machine can now be added to the domain. Unfortunately, this is Windows and a reboot is required after this action.
+
+```powershell
+Add-Computer -DomainName example.com -Credential example.com\Administrator
+Restart-Computer -Force
+```
+
+After the reboot has taken place, we will apply network settings for the domain controller. 
+
+```powershell
+Invoke-DomainControllerNetworkSettings -Hostname "DC2" -IPv4Address "192.168.1.11" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "192.168.1.10"
+Restart-Computer -Force
+```
+
+Once this reboot is complete, add the new domain controller and reboot
+
+```powershell
+Add-NewDomainController
+Restart-Computer -Force
+```
 
 ## License
 
