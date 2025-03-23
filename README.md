@@ -1,7 +1,5 @@
 # PSCreateADForest
-Rapidly create new Active Directory Forests and Domain Controllers.
 
-## Description
 PSCreateADForest is a PowerShell module designed to quickly create new Active Directory forests and domain controllers. It's ideal for disaster recovery, setting up AD from scratch, or creating test and development environments efficiently, allowing for rapid deployment and teardown without starting from scratch.
 
 ## Prerequisites
@@ -15,8 +13,6 @@ PSCreateADForest is a PowerShell module designed to quickly create new Active Di
 #### Creating a New Active Directory Forest
 
 #### Creating a New Domain Controller in an Existing Forest
-
-
 
 ## License
 
