@@ -28,7 +28,7 @@ function Get-OSTarget {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Get-OSTarget.md
+        https://github.com/Michael-Free/PSCreateADForest/
   #>
   $osInfo = Get-CimInstance -ClassName Win32_OperatingSystem
   if (-not ($osInfo.ProductType -eq 2 -or $osInfo.ProductType -eq 3)) {
@@ -66,7 +66,7 @@ function Get-AdapterCount {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Get-AdapterCount.md
+        https://github.com/Michael-Free/PSCreateADForest/
     #>
   $activeAdapters = Get-NetAdapter | Where-Object { $_.Status -eq 'Up' }
   $adapterCount = $activeAdapters.Count
@@ -118,7 +118,7 @@ function Get-IPv4NetworkID {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Get-IPv4NetworkID.md
+        https://github.com/Michael-Free/PSCreateADForest/
 
     #>
   try {
@@ -181,7 +181,7 @@ function Get-DomainInfo {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Get-DomainInfo.md
+        https://github.com/Michael-Free/PSCreateADForest/
     #>
   $domainInfo = Get-CimInstance -Namespace root\cimv2 -ClassName Win32_ComputerSystem
   if (-not $domainInfo.PartOfDomain) {
@@ -258,7 +258,7 @@ function Approve-DomainVariables {
         Copyright   : 2025, Michael Free. All Rights Reserved.
   
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Approve-DomainVariables.md
+        https://github.com/Michael-Free/PSCreateADForest/
     #>
   param(
     [Parameter(Mandatory = $true)]
@@ -325,7 +325,7 @@ function Approve-IPVariables {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Approve-IPVariables.md
+        https://github.com/Michael-Free/PSCreateADForest/
     #>
   param (
     [Parameter(Mandatory = $true)]
@@ -377,7 +377,7 @@ function Add-NetworkConfig {
         Copyright   : 2025, Michael Free. All Rights Reserved.
 
     .LINK
-        https://github.com/Michael-Free/PSCreateADForest/Docs/Add-NetworkConfig.md
+        https://github.com/Michael-Free/PSCreateADForest/
     #>
   try {
     Set-NetIPv6Protocol -RandomizeIdentifiers Disabled
