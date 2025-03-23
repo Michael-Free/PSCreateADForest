@@ -18,6 +18,35 @@ PSCreateADForest is a PowerShell module designed to quickly create new Active Di
     - Understanding of Active Directory concepts.
 
 ## Installation
+There are 3 ways to install the `PSCreateADForest` repository:
+
+1. Direct Repository Sources:
+    - Clone this repository using Git or download the ZIP file.
+    - Extract the contents of the ZIP file to a directory on your Windows Server.
+    - Open PowerShell as an administrator and navigate to the directory where you extracted the repo files.
+    - Import the module manually:
+    ```powershell
+    Import-Mopdule "C:\Path\To\PSCreateADForest.psm1"
+    ```
+
+2. Download Official Releases from GitHub:
+    - Navigate to the latest release on Github by clicking on Releases (or by [clicking here](https://github.com/Michael-Free/PSCreateADForest/releases)).
+    - Extract the contents of the ZIP file to a directory on your Windows Server.
+    - Open PowerShell as an administrator and navigate to the directory where you extracted the repo files.
+    - Import the module manually:
+    ```powershell
+    Import-Mopdule "C:\Path\To\PSCreateADForest.psm1"
+    ```
+
+3. Installing Directly from Powershell Gallery:
+    - Open a PowerShell Terminal and install the module:
+    ```powershell
+    Install-Module -Name PSCreateADForest
+    ```
+    - Import the module for usage:
+    ```powershell
+    Import-Module -Name PSCreateADForest
+    ```
 
 ## Usage
 
