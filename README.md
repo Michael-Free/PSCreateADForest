@@ -3,6 +3,19 @@
 PSCreateADForest is a PowerShell module designed to quickly create new Active Directory forests and domain controllers. It's ideal for disaster recovery, setting up AD from scratch, or creating test and development environments efficiently, allowing for rapid deployment and teardown without starting from scratch.
 
 ## Prerequisites
+- Operating System:
+    - Windows Server (not Windows Desktop)
+    - The server must NOT be a domain controller, or joined to a Windows domain.
+- PowerShell:
+    - PowerShell 5.1 or later installed on the server.
+- Python:
+    - Python 3.x installed (for running the user generation script).
+    - The faker library installed (pip install faker).
+- Permissions:
+    - Administrative privileges on the server.
+- Basic Knowledge:
+    - Familiarity with PowerShell.
+    - Understanding of Active Directory concepts.
 
 ## Installation
 
@@ -18,6 +31,7 @@ This example shows how to set up a NEW Active Directory Forest and a new Domain 
 Invoke-DomainControllerNetworkSettings -Hostname "DC1" -IPv4Address "192.168.1.10" -IPv4Prefix 24 -IPv4Gateway "192.168.1.1" -IPv4DNS "8.8.8.8"
 Restart-Computer -Force
 ```
+
 In the first step, we are setting the new hostname of this server instance. However, if the server is already set to the desired hostname, supply the current hostname of the device. The IPv4Address MUST be an IP address that is currently NOT in use.  This will be the NEW IP address of the server going forward.
 
 After the first reboot, creating the new Domain Controller and setting up the forest is now possible.
@@ -28,7 +42,6 @@ Restart-Computer -Force
 ```
 
 Reboot after this action has completed and the Domain Controller will now be configured and ready to use.
-
 
 #### Adding a New Domain Controller in an Existing Forest
 This example demonstrates how to add additional domain controllers to the newly created Active Directory forest that was created in Example 1. 
@@ -53,7 +66,7 @@ Invoke-DomainControllerNetworkSettings -Hostname "DC2" -IPv4Address "192.168.1.1
 Restart-Computer -Force
 ```
 
-Once this reboot is complete, add the new domain controller and reboot
+Once this reboot is complete, add the new domain controller and reboot.
 
 ```powershell
 Add-NewDomainController
