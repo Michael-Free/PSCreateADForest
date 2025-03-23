@@ -476,7 +476,7 @@ function Invoke-DomainControllerNetworkSettings {
   try {
     Get-OSTarget
     Get-AdapterCount
-    Approve-IPVariable -IpVars $ipVariables
+    Approve-IPVariables -IpVars $ipVariables
     Add-NetworkConfig
     $networkAdapterPrefix = (Get-NetAdapter).ifIndex
     New-NetIPAddress -InterfaceIndex $networkAdapterPrefix -IPAddress $IPv4Address -PrefixLength $IPv4Prefix -DefaultGateway $IPv4Gateway | Out-Null
