@@ -51,9 +51,11 @@ This example stores the network ID in the \`$networkID\` variable and outputs it
 ### [string]
 ###     The network ID in CIDR notation, such as "192.168.1.0/24".
 ## NOTES
-- Author: Michael Free (c) 2024
-- Website: https://github.com/Michael-Free
-- Social: https://mastodon.social/@MichaelFree
+Author      : Michael Free
+Date        : 2025-03-22
+License     : Free Custom License (FCL) v1.0
+Copyright   : 2025, Michael Free.
+All Rights Reserved.
 
 ## RELATED LINKS
 

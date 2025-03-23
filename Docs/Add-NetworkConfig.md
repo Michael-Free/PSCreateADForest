@@ -40,9 +40,11 @@ This command turns off IPv6 Random & Temporary IP Assignments, as well as IPv6 T
 ## OUTPUTS
 
 ## NOTES
-- Author: Michael Free (c) 2024
-- Website: https://github.com/Michael-Free
-- Social: https://mastodon.social/@MichaelFree
+Author      : Michael Free
+Date        : 2025-03-22
+License     : Free Custom License (FCL) v1.0
+Copyright   : 2025, Michael Free.
+All Rights Reserved.
 
 ## RELATED LINKS
 
